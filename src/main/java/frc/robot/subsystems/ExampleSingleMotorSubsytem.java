@@ -19,7 +19,19 @@ public class ExampleSingleMotorSubsytem {
     private final DigitalInput microswitch;
     private double desiredPosition;
 
-    /* TODO: add comment explaining why this variable is protected instead of private */
+    /* In Java, there are 3 Access Modifier keywords that you may see used in front of various classes, methods, variables, etc.
+     * These keywords and their meanings are: 
+     * 
+     * "public": this keyword allows anything inside or outside of the class to access the element it's used on.  For example, this
+     * class is a public class, and can be called from any file within this project
+     * 
+     * "protected": this keyword is used to limit access to only the class it's defined in, or any subclasses of that class.  In this case,
+     * the "motorSpeed" variable below is used in this class here, and in the subclass "ExampleDoubleMotorSubsystem".  Outside of that,
+     * no other file may access this variable.
+     * 
+     * "private": this keyword restricts usage of the element it's used on to only be usable within the class it's created in.  No other files
+     * or classes, even subclasses of the class that it's used in, may access that element.
+     */
 
     protected double motorSpeed;
     
