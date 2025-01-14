@@ -70,6 +70,8 @@ public class ExampleDoubleMotorSubsystem extends SubsystemBase {
 
     private double GetPIDValue(double angle) {
 
+        /*  Calculates the PID value needed and then gets absoluted and given a sign based on the direction we need it to go.  */
+
         double pidValue = pid.calculate(angle, desiredAngle);
 
         if (desiredAngle >= angle) {
@@ -82,11 +84,15 @@ public class ExampleDoubleMotorSubsystem extends SubsystemBase {
     
     private double GetCurrentAngle() {
 
+        /*  Gets the current angle from the absolute encoder from the Motor class.  */
+
         return motor.mainMotor.getAbsoluteAngle();
 
     }
 
     private boolean IsInDeadzone(double deadzone) {
+
+        /*  Checks to see if the desired angle and current angle are close enough together to be in the deadzone.  */
 
         return desiredAngle > GetCurrentAngle() - deadzone && desiredAngle < GetCurrentAngle() + deadzone;
 
@@ -100,17 +106,24 @@ public class ExampleDoubleMotorSubsystem extends SubsystemBase {
 
     public boolean IsReady() {
 
+        /*  If it is in the deadzone with a low enough velocity it will return true and the command can finish.  */
+
         return IsInDeadzone(1) && motor.GetVelocity() < 100;
 
     }
 
     public void ActivateRotation() {
 
+        /*  Activates the rotation so that the rotation doesn't start prematurely. It also makes sure it doesn't try to continuously run.  */
+
         rotationActive = true;
 
     }
 
     public void PivotToTarget() {
+
+        /*  Checks to see if the rotation is active, and if its not, returns, leaving the method. 
+            Has a safety check then supplies the PID value if its within that check. */
 
         if (!rotationActive) return;
 
