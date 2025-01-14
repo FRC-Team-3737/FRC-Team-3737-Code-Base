@@ -5,10 +5,18 @@ import frc.robot.motor.Motor.encoderType;
 public class Motors {
     
     public final Motor motor;
-    
-    public Motors(MotorInfo motor, encoderType encoder) {
 
-        this.motor = new Motor(motor, encoder);
+    /*  The following is method overloading, allowing different inputs to be possible by using different parameters with a same name method.  */
+    
+    public Motors(MotorInfo motor, encoderType encoder, boolean inverted) {
+
+        this.motor = new Motor(motor, encoder, inverted);
+
+    }
+
+    public Motors(MotorInfo motor) {
+
+        this.motor = new Motor(motor, encoderType.None, false);
 
     }
 
@@ -36,6 +44,12 @@ public class Motors {
 
     }
 
+    public void Spin(double speed) {
+
+        motor.motor.set(speed);
+
+    }
+    
     public String[] GetDebuggingInformation() {
 
         String[] info = {
@@ -52,12 +66,6 @@ public class Motors {
         };
 
         return info;
-
-    }
-
-    public void Spin(double speed) {
-
-        motor.motor.set(speed);
 
     }
 

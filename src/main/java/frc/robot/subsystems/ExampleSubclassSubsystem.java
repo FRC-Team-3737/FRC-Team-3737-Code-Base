@@ -27,7 +27,7 @@ public class ExampleSubclassSubsystem extends ExampleSingleMotorSubsytem {
 
         super();
 
-        motor = new Motors(Constants.EXAMPLE_ALTERNATE_INFO, encoderType.None);
+        motor = new Motors(Constants.EXAMPLE_ALTERNATE_INFO);
 
     }
 
@@ -70,7 +70,7 @@ public class ExampleSubclassSubsystem extends ExampleSingleMotorSubsytem {
 
     /* As with any other class, new methods may be added on top of what the superclass may provide. */
 
-    public String[] GetPairedDebuggingInfo() {
+    public String[] GetDebuggingInfo() {
 
         return motor.GetDebuggingInformation();
 

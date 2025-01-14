@@ -10,7 +10,9 @@ import com.revrobotics.spark.config.SparkFlexConfig;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.revrobotics.spark.SparkAbsoluteEncoder;
+import com.revrobotics.spark.config.AbsoluteEncoderConfig;
 import com.revrobotics.spark.SparkAnalogSensor;
+import com.revrobotics.spark.config.AnalogSensorConfig;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
@@ -21,7 +23,9 @@ public class Motor {
     public final SparkBase motor;
     public final SparkBaseConfig motorConfig;
     public SparkAnalogSensor analogEncoder;
+    public AnalogSensorConfig analogEncoderConfig;
     public SparkAbsoluteEncoder absoluteEncoder;
+    public AbsoluteEncoderConfig absoluteEncoderConfig;
     public RelativeEncoder inBuiltEncoder;
     public final MotorInfo info;
     
@@ -29,7 +33,7 @@ public class Motor {
         None ,Analog, Absolute;
     }
 
-    public Motor(MotorInfo info, encoderType encoder) {
+    public Motor(MotorInfo info, encoderType encoder, boolean inverted) {
 
         this.info = info;
 
@@ -49,8 +53,10 @@ public class Motor {
 
         if (encoder == encoderType.Analog) {
             this.analogEncoder = motor.getAnalog();
+            analogEncoderConfig.inverted(inverted);
         } else if (encoder == encoderType.Absolute) {
             this.absoluteEncoder = motor.getAbsoluteEncoder();
+            absoluteEncoderConfig.inverted(inverted);
         } 
 
     }

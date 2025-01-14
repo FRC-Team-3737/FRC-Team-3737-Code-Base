@@ -2,11 +2,12 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.motor.Motors;
 import frc.robot.motor.Motor.encoderType;
 
-public class ExampleSingleMotorSubsytem {
+public class ExampleSingleMotorSubsytem extends SubsystemBase {
 
     /*  This is what a single motor subsystem will look like, in other words, a system with not secondary motor to depend on.
         This is also what a transitional based subsystem not rotational based subsytem will look like.
@@ -41,7 +42,7 @@ public class ExampleSingleMotorSubsytem {
             Variables can be declared here or with the variable itself instead of the constructor.
             The constructor will always be "public {filename}() {}"  */
 
-        motor = new Motors(Constants.EXAMPLE_INFO, encoderType.None);
+        motor = new Motors(Constants.EXAMPLE_INFO);
         motorSpeed = 0;
         desiredPosition = 0;
 
