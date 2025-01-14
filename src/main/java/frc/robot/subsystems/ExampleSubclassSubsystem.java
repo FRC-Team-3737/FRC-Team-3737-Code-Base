@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import frc.robot.Constants;
 import frc.robot.motor.Motors;
+import frc.robot.motor.PairedMotors;
 import frc.robot.motor.Motor.encoderType;
 
 /* This is what a double motor subsystem will look like, where there are 2 motors working in tandem to operate
@@ -15,7 +16,7 @@ import frc.robot.motor.Motor.encoderType;
 
 public class ExampleSubclassSubsystem extends ExampleSingleMotorSubsytem {
     
-    private final Motors pairedMotor;
+    private final Motors motor;
 
     public ExampleSubclassSubsystem() {
 
@@ -26,7 +27,7 @@ public class ExampleSubclassSubsystem extends ExampleSingleMotorSubsytem {
 
         super();
 
-        pairedMotor = new Motors(Constants.EXAMPLE_PAIRED_INFO, encoderType.None);
+        motor = new Motors(Constants.EXAMPLE_ALTERNATE_INFO, encoderType.None);
 
     }
 
@@ -48,21 +49,21 @@ public class ExampleSubclassSubsystem extends ExampleSingleMotorSubsytem {
          */
 
         super.PositiveMove();
-        pairedMotor.Spin(motorSpeed);
+        motor.Spin(motorSpeed);
 
     }
 
     public void NegativeMove() {
 
         super.NegativeMove();
-        pairedMotor.Spin(-motorSpeed);
+        motor.Spin(-motorSpeed);
 
     }
 
     public void Stop() {
 
         super.Stop();
-        pairedMotor.Spin(0);
+        motor.Spin(0);
 
 
     }
@@ -71,7 +72,7 @@ public class ExampleSubclassSubsystem extends ExampleSingleMotorSubsytem {
 
     public String[] GetPairedDebuggingInfo() {
 
-        return pairedMotor.GetDebuggingInformation();
+        return motor.GetDebuggingInformation();
 
     }
 

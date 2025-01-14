@@ -5,6 +5,7 @@
 package frc.robot;
 
 import frc.robot.motor.MotorInfo;
+import frc.robot.motor.MotorInfo.controllerType;
 import frc.robot.swervemodule.SwerveModuleInfo;
 
 import edu.wpi.first.math.geometry.Translation2d;
@@ -34,7 +35,9 @@ public final class Constants {
   public static final int FrontLeftDriveID = 3;
   public static final int FrontLeftSteerID = 4;
   public static final int ExampleID = 9;
-  public static final int ExamplePairedID = 10;
+  public static final int ExampleMainPairedID = 10;
+  public static final int ExampleSlavePairedID = 11;
+  public static final int ExampleAlternateID = 12;
 
   // Swerve
   public static final SwerveModuleInfo FRONT_RIGHT = new SwerveModuleInfo(FrontRightDriveID, FrontRightSteerID, 3.371094, 360, 82.5, -1, -1);
@@ -44,8 +47,10 @@ public final class Constants {
 
   // Robot
   // The MAX_ENCODER_VALUE is used to say what the max encoder value is, while REFERENCE_ANGLE is the starting angle. Both are currently unused, and are most likely going to get depracated.
-  public static final MotorInfo EXAMPLE_INFO = new MotorInfo(ExampleID, 0, 0);
-  public static final MotorInfo EXAMPLE_PAIRED_INFO = new MotorInfo(ExamplePairedID, 0, 0);
+  public static final MotorInfo EXAMPLE_INFO = new MotorInfo(ExampleID, controllerType.MAX, 0, 0);
+  public static final MotorInfo EXAMPLE_MAIN_PAIRED_INFO = new MotorInfo(ExampleMainPairedID, controllerType.MAX, 0, 0);
+  public static final MotorInfo EXAMPLE_SLAVE_PAIRED_INFO = new MotorInfo(ExampleSlavePairedID, controllerType.MAX, 0, 0);
+  public static final MotorInfo EXAMPLE_ALTERNATE_INFO = new MotorInfo(ExampleAlternateID, controllerType.MAX, 0, 0);
 
   public static final class Swerve {
     public static final Translation2d flModuleOffset = new Translation2d(0.28, 0.28);
