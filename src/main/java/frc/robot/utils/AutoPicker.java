@@ -8,6 +8,7 @@ import frc.robot.auto.Routines.ExampleAutoRoutine;
 
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ExampleSingleMotorSubsystem;
+import frc.robot.subsystems.SubsystemList;
 import frc.robot.subsystems.ExampleDoubleMotorSubsystem;
 
 /*  Finally import the smart dashboard, sendable chooser, and command.  */
@@ -15,14 +16,11 @@ import frc.robot.subsystems.ExampleDoubleMotorSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class AutoPicker {
     
     /*  First you will make your variables for the subsystems.  */
-
-    private final DriveSubsystem drive;
-    private final ExampleSingleMotorSubsystem singleMotorSubsystem;
-    private final ExampleDoubleMotorSubsystem doubleMotorSubsystem;
 
     /*  Then, you need to initialize the sendable chooser.  */
 
@@ -30,23 +28,29 @@ public class AutoPicker {
 
     /*  Now create the Constructor. Make sure to declare your subsystems, chooser options and where the data is going.  */
 
-    public AutoPicker(DriveSubsystem m_drive, ExampleSingleMotorSubsystem m_singleMotorSubsystem, ExampleDoubleMotorSubsystem m_doubleMotorSubsystem) {
-
-        drive = m_drive;
-        singleMotorSubsystem = m_singleMotorSubsystem;
-        doubleMotorSubsystem = m_doubleMotorSubsystem;
+    public AutoPicker(SubsystemList subsystems) {
 
         sendableChooser.setDefaultOption("Choose Auto", null);
-        sendableChooser.addOption("Example Auto", new ExampleAutoRoutine(singleMotorSubsystem, doubleMotorSubsystem, drive));
+        Command[] autoCommands = {
+            new ExampleAutoRoutine(subsystems)
+        };
+
+        this.SetAutoRoutines(autoCommands);
 
         SmartDashboard.putData(sendableChooser);
-
     }
 
     public Command GetAuto() {
 
         return sendableChooser.getSelected();
 
+    }
+
+    private void SetAutoRoutines(Command[] routines) {
+        for (Command routine : routines) {
+            String name = routine.getName();
+            sendableChooser.addOption(name, routine);
+        }
     }
 
 }

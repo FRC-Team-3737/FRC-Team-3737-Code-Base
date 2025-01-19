@@ -14,6 +14,9 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.CommandGenericHID;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
+// Auto Imports
+import frc.robot.auto.AutoPicker;
+
 // Command Imports
 import frc.robot.commands.DriveCommands.DriveStopCommand;
 import frc.robot.commands.DriveCommands.TeleopMoveCommand;
@@ -21,6 +24,8 @@ import frc.robot.commands.DriveCommands.TeleopMoveCommand;
 // Subsystem Imports
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ExampleSingleMotorSubsystem;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.subsystems.SubsystemList;
 
 // Dashboard Imports
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -28,6 +33,10 @@ import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 
 public class RobotContainer {
   DriveSubsystem drive = new DriveSubsystem();
+  SubsystemBase[] subsystems = {
+    drive
+  };
+  SubsystemList subsystemList = new SubsystemList(subsystems);
   ExampleSingleMotorSubsystem ESMS = new ExampleSingleMotorSubsystem();
   
   CommandXboxController commandDriverController = new CommandXboxController(Constants.DRIVE_CONTROL_PORT);
@@ -35,6 +44,8 @@ public class RobotContainer {
   CommandXboxController commandOperatorController = new CommandXboxController(Constants.OPERATOR_CONTROL_PORT);
   XboxController operatorController = new XboxController(Constants.OPERATOR_CONTROL_PORT);
   CommandGenericHID buttonBoard = new CommandGenericHID(Constants.BUTTON_BOARD_PORT);
+
+  AutoPicker autoPicker = new AutoPicker(subsystemList);
 
   public RobotContainer() {
     drive.setDefaultCommand(new DriveStopCommand(drive));
