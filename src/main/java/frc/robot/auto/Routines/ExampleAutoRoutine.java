@@ -4,7 +4,7 @@ package frc.robot.auto.Routines;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.ExampleSingleMotorSubsystem;
-import frc.robot.subsystems.SubsystemList;
+import frc.robot.utils.SubsystemList;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ExampleDoubleMotorSubsystem;
 

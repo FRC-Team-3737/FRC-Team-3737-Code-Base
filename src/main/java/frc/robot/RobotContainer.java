@@ -13,29 +13,26 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.CommandGenericHID;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-
-// Auto Imports
-import frc.robot.auto.AutoPicker;
-
 // Command Imports
 import frc.robot.commands.DriveCommands.DriveStopCommand;
 import frc.robot.commands.DriveCommands.TeleopMoveCommand;
 
 // Subsystem Imports
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.ExampleDoubleMotorSubsystem;
 import frc.robot.subsystems.ExampleSingleMotorSubsystem;
+import frc.robot.utils.AutoPicker;
+import frc.robot.utils.SubsystemList;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.subsystems.SubsystemList;
-
 // Dashboard Imports
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 
 public class RobotContainer {
   DriveSubsystem drive = new DriveSubsystem();
-  SubsystemBase[] subsystems = {
-    drive
-  };
+  ExampleSingleMotorSubsystem singleMotorSubsystem = new ExampleSingleMotorSubsystem();
+  ExampleDoubleMotorSubsystem doubleMotorSubsystem = new ExampleDoubleMotorSubsystem();
+  SubsystemBase[] subsystems = { drive, singleMotorSubsystem, doubleMotorSubsystem };
   SubsystemList subsystemList = new SubsystemList(subsystems);
   ExampleSingleMotorSubsystem ESMS = new ExampleSingleMotorSubsystem();
   
@@ -76,7 +73,7 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand() {
-    return null;
+    return autoPicker.GetAuto();
   }
 
   public void displayDashboard() {

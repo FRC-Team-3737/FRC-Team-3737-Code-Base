@@ -4,19 +4,11 @@ package frc.robot.utils;
 
 import frc.robot.auto.Routines.ExampleAutoRoutine;
 
-/*  Then, add your subsystems which you need.  */
-
-import frc.robot.subsystems.DriveSubsystem;
-import frc.robot.subsystems.ExampleSingleMotorSubsystem;
-import frc.robot.subsystems.SubsystemList;
-import frc.robot.subsystems.ExampleDoubleMotorSubsystem;
-
 /*  Finally import the smart dashboard, sendable chooser, and command.  */
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class AutoPicker {
     
@@ -31,13 +23,14 @@ public class AutoPicker {
     public AutoPicker(SubsystemList subsystems) {
 
         sendableChooser.setDefaultOption("Choose Auto", null);
-        Command[] autoCommands = {
+        Command[] autoRoutines = {
             new ExampleAutoRoutine(subsystems)
         };
 
-        this.SetAutoRoutines(autoCommands);
+        this.SetAutoRoutines(autoRoutines);
 
         SmartDashboard.putData(sendableChooser);
+
     }
 
     public Command GetAuto() {
