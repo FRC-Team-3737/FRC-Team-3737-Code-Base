@@ -15,7 +15,6 @@ public class ExampleDoubleMotorSubsystem extends SubsystemBase {
 
     private final PairedMotors motor;
     private final PID pid;
-    private double rotationSpeed;
     private boolean rotationActive;
     private double desiredAngle;
     private double p;
@@ -33,7 +32,6 @@ public class ExampleDoubleMotorSubsystem extends SubsystemBase {
         pid.ToleranceConfig(1);
         pid.ContinuousInput(0, 360);
 
-        rotationSpeed = 0;
         desiredAngle = 0;
         rotationActive = false;
 

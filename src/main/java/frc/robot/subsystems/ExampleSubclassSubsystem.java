@@ -2,8 +2,6 @@ package frc.robot.subsystems;
 
 import frc.robot.Constants;
 import frc.robot.motor.Motors;
-import frc.robot.motor.PairedMotors;
-import frc.robot.motor.Motor.encoderType;
 
 /* This is what a double motor subsystem will look like, where there are 2 motors working in tandem to operate
  * a single mechanism.  This is also an example of how to build a subclass of another class, in this instance,

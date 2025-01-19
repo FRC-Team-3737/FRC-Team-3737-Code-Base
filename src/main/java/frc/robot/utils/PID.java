@@ -58,7 +58,7 @@ public class PID {
 
     }
 
-    public void PIDConfig(double minimalIntegral, double maximumIntegral) {
+    public void IntegratorConfig(double minimalIntegral, double maximumIntegral) {
 
         pid.setIntegratorRange(minimalIntegral, maximumIntegral);
 

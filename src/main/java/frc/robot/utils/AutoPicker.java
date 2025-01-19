@@ -37,7 +37,9 @@ public class AutoPicker {
         doubleMotorSubsystem = m_doubleMotorSubsystem;
 
         sendableChooser.setDefaultOption("Choose Auto", null);
-        sendableChooser.addOption("Example Auto", new ExampleAutoRoutine(m_singleMotorSubsystem, m_doubleMotorSubsystem, m_drive));
+        sendableChooser.addOption("Example Auto", new ExampleAutoRoutine(singleMotorSubsystem, doubleMotorSubsystem, drive));
+
+        SmartDashboard.putData(sendableChooser);
 
     }
 

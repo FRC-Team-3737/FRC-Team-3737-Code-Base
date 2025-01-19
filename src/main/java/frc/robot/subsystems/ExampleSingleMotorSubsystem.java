@@ -5,12 +5,11 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.motor.Motors;
-import frc.robot.motor.Motor.encoderType;
 
 public class ExampleSingleMotorSubsystem extends SubsystemBase {
 
     /*  This is what a single motor subsystem will look like, in other words, a system with not secondary motor to depend on.
-        This is also what a transitional based subsystem not rotational based subsytem will look like.
+        This is also what a translational based subsystem not rotational based subsytem will look like.
         Below is where the variables are made, which can be declared directly, in the constructor, or later in the code.  
         Above is where the imports and the class are. A class is always "public class {filename} {}" and can optionally have extensions.
         Imports are from other libraries or files and allow you to use methods under those classes.  */
@@ -54,7 +53,7 @@ public class ExampleSingleMotorSubsystem extends SubsystemBase {
     }
 
     /*  Below are the private methods, only able to be used in this file, we keep these above the public methods for ease of access.
-        In a single motor transitional subsystem, there is normally no need for a private method, but I've exampled 2 below that could be used.  */
+        In a single motor translational subsystem, there is normally no need for a private method, but I've exampled 2 below that could be used.  */
 
     @SuppressWarnings("unused")
     private boolean IsInDesiredZone(double deadzone) {
